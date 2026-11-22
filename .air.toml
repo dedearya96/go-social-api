@@ -1,0 +1,32 @@
+#:schema https://json.schemastore.org/air.json
+
+[build]
+  # Perintah untuk melakukan kompilasi
+  cmd = "go build -tags dev -o ./tmp/main.exe ."
+  
+  # Lokasi file hasil kompilasi
+  bin = "./tmp/main.exe"
+  
+  # Folder yang dipantau oleh Air
+  include_dir = ["."]
+  
+  # File/Folder yang diabaikan agar tidak memicu build berulang kali
+  exclude_dir = ["assets", "tmp", "vendor", "testdata"]
+  
+  # Ekstensi file yang memicu restart
+  include_ext = ["go", "tpl", "tmpl", "html"]
+  
+  # Delay sebelum restart (dalam milidetik)
+  delay = 1000
+  
+  # Log file jika build gagal
+  log = "build-errors.log"
+
+[screen]
+  clear_on_rebuild = true
+  keep_scroll = true
+
+[log]
+  main_only = false
+  silent = false
+  time = true
